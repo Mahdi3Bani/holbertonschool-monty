@@ -1,8 +1,10 @@
 #include "monty.h"
 /**
-* main - function monty program
-Return : success or failure
-*/
+ * main - monty program
+ * @argc: argument counter
+ * @argv: argument value
+ * Return: success or failure
+ */
 int main(int argc, char **argv)
 {
 	FILE *fd;
@@ -11,20 +13,24 @@ int main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		fprintf(stderr, "USAGE: monty file\n");
-		exit(EXIT_FAILURE);
+		return (usage_error()); /** print error*/
 	}
-	fd = open(argv[1], "r");
+
+	fd = fopen(argv[1], "r"); /** open file*/
+
 	if (fd == NULL)
 	{
-		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
-		exit(EXIT_FAILURE);
+		return (open_error(argv[1])); /** print error*/
 	}
+
+	/** run the monty byte */
 	while (fgets(line, 500, fd))
 	{
 		excute(line[i]);
 		i++;
 	}
+
+	/** close file */
 	fclose(fd);
 	return (EXIT_SUCCESS);
 
