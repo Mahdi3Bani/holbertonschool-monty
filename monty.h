@@ -40,6 +40,10 @@ typedef struct instruction_s
 
 /** monty function*/
 
+int execute_monty(FILE *monty_file);
+void (*get_func(char *opcode))(stack_t**, unsigned int);
+
+
 /** error function */
 int usage_error(void);
 int open_error(char *file);
