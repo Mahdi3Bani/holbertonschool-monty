@@ -32,7 +32,7 @@ stack_t *node;
 	(*stack)->prev = node;
 	*stack = node;
 
-	
+	_free(*stack);
 
 	
 	

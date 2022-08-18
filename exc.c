@@ -1,5 +1,4 @@
 #include "monty.h"
-char *line;
 int info;
 /**
  * execute_monty - function that execute the monty byte
@@ -7,7 +6,7 @@ int info;
  */
 
 
-void execute( stack_t **stack, int line_number)
+void execute(char *line, stack_t **stack, int line_number)
 {
 	char *token;
 	char *tok;
@@ -37,7 +36,8 @@ void execute( stack_t **stack, int line_number)
 		else
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, token);
-			free(*stack);
+
+			_free(*stack);
 			exit(EXIT_FAILURE);
 		}
 	}

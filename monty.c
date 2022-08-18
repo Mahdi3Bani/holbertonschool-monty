@@ -1,5 +1,4 @@
 #include "monty.h"
-char *line;
 /**
  * main - monty program
  * @argc: argument counter
@@ -9,7 +8,7 @@ char *line;
 int main(int argc, char **argv)
 {
 	FILE *fd;
-	
+	char line[500];
 	stack_t *stack = NULL;
 	int line_number;
 
@@ -28,7 +27,7 @@ int main(int argc, char **argv)
 	/** run the monty byte */
 	while (fgets(line, 500, fd))
 	{
-		execute(&stack, line_number);
+		execute(line,&stack, line_number);
 		line_number ++;
 	}
 
