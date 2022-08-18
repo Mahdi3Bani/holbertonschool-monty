@@ -7,7 +7,7 @@
 
 void execute(char *line, stack_t **stack, int line_number)
 {
-	char *tokenn;
+	char *token;
 
 
 	instruction_t instructions[] = {{"push", push}, {"pall", pall},
