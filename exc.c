@@ -1,5 +1,6 @@
 #include "monty.h"
 char *line;
+int info;
 /**
  * execute_monty - function that execute the monty byte
  *
@@ -9,7 +10,7 @@ char *line;
 void execute( stack_t **stack, int line_number)
 {
 	char *token;
-
+	char *tok;
 
 	instruction_t instructions[] = {{"push", push}, {"pall", pall},
 		{"pint", pint}, {"pop", pop}, {"swap", swap},
@@ -18,7 +19,12 @@ void execute( stack_t **stack, int line_number)
 	instruction_t *inst = instructions;
 
 	token = strtok (line, " \t\r\n");
-	if (token)
+	if (strcmp(token, "push") == 0)
+	{
+		tok = strtok(NULL, " \t\r\n");
+		info = atoi(tok);
+	}
+	else if (token)
 	{
 
 		while ((inst->opcode) && strcmp(inst->opcode, token))

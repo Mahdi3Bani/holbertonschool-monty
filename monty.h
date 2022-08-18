@@ -7,7 +7,7 @@
 #include <string.h>
 
 
-extern char *info;
+extern int info;
 
 
 /**

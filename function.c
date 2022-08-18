@@ -1,5 +1,5 @@
 #include "monty.h"
-char *line;
+int info;
 /**
  * push - function tha push a value to a stack linked list
  * @stack: node of stack linked list
@@ -7,50 +7,35 @@ char *line;
  */
 void push(stack_t **stack, unsigned int line_number)
 {
-stack_t *nodes;
-char *val = malloc(1);
-int i = 0, j = 0;
+stack_t *node;
+(void)line_number;
 
-	while (line[i] < '0' || line[i] > '9')
+	node = malloc(sizeof(stack_t));
+	
+	if (node == NULL)
 	{
-		if (line[i] == '\0')
-		{
-			fprintf(stderr, "L%u: Usage: push intger\n", line_number);
-			free(*stack);
-			exit(EXIT_FAILURE);
-		}
-		if (line[i] == '-')
-		{
-			val[j] = line[i];
-			j++;
-		}
-		i++;
-	}
-	while (line[i] != ' ' && line[i] <= '\0'  && line[i] >= '0' && line[i] <= '9')
-		{
-		val[j] = line[i];
-		i++;
-		j++;
-	}
-	val[j] = '\0';
-	nodes = malloc(sizeof(stack_t));
-	if (nodes == NULL)
-	{
-		fprintf(stderr, "Error: malloc failed\n");
-		free(*stack);
 		exit(EXIT_FAILURE);
 	}
-	nodes->n = atoi(val);
-	nodes->prev = NULL;
-	if (*stack == NULL)
-		nodes->next = NULL;
-	else
+
+	if (stack == NULL)
 	{
-		nodes->next = *stack;
-		(*stack)->prev = nodes;
+		exit(EXIT_FAILURE);
 	}
-	*stack = nodes;
-	free(val);
+	node->n = info;
+	node->prev = NULL;
+	node->next = *stack;
+	if (*stack == NULL)
+	{
+		*stack = node;
+		return;
+	}
+	(*stack)->prev = node;
+	*stack = node;
+
+	
+
+	
+	
 }
 
 /**
