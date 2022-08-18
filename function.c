@@ -10,9 +10,46 @@ stack_t *nodes;
 char *val;
 int i = 0, j = 0;
 
-{
-
-}
+	while (line[i] < '0' || line[i] > '9')
+	{
+		if (line[i] == '\0')
+		{
+			fprintf(stderr, "L%u: Usage: push intger\n", line_mumber);
+			free-stack(*stack);
+			exit(EXIT_FAILURE);
+		}
+		if (line[i] == '-')
+		{
+			val[j] = line[i];
+			j++;
+		}
+		i++
+	}
+	while (line[i] != ' ' && line[i] <= '\0'  && line[i] >= '0' && line[i] <= '9')
+		{
+		val[j] = line[i];
+		i++;
+		j++;
+	}
+	val[j] = '\0';
+	nodes = malloc(sizeof(stack_t));
+	if (nodes == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
+	nodes->n = atoi(value);
+	nodes->prev = NULL;
+	if (*stack == NULL)
+		nodes->next = NULL;
+	else
+	{
+		nodes->next = *stack;
+		(*stack)->prev = nodes;
+	}
+	*stack = nodes;
+	free(val);
 }
 
 /**
