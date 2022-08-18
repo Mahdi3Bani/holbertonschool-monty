@@ -7,7 +7,8 @@
 
 void execute(char *line, stack_t **stack, int line_number)
 {
-	char **token;
+	char *token;
+
 
 	instruction_t instructions[] = {{"push", push}, {"pall", pall},
 		{"pint", pint}, {"pop", pop}, {"swap", swap},
@@ -18,7 +19,8 @@ void execute(char *line, stack_t **stack, int line_number)
 	token = strtok (line, " \t\r\n");
 	if (token)
 	{
-		while ((inst->opcode) && strcmp(inst->opcode, token[0]))
+	
+		while ((inst->opcode) && strcmp(inst->opcode, token))
 		inst++;
 		if (inst->opcode)
 		{
@@ -27,7 +29,7 @@ void execute(char *line, stack_t **stack, int line_number)
 		}
 		else
 		{
-			fprintf(stderr, "L%lu: unknown instruction %s\n", line_number, token[0]);
+			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, token);
 			_free(*stack);
 			exit(EXIT_FAILURE);
 		}
