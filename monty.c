@@ -9,7 +9,7 @@ int main(int argc, char **argv)
 {
 	FILE *fd;
 	char line[500];
-	int i;
+	stack_t *stack = NULL;
 
 	if (argc != 2)
 	{
@@ -26,8 +26,8 @@ int main(int argc, char **argv)
 	/** run the monty byte */
 	while (fgets(line, 500, fd))
 	{
-		excute(line[i]);
-		i++;
+		execute(line, &stack);
+		
 	}
 
 	/** close file */
