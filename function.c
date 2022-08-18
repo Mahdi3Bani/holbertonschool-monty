@@ -45,14 +45,15 @@ stack_t *node;
  */
 void pall(stack_t **stack, unsigned int line_number)
 {
-	stack_t *val = (*stack)->next;
+	(void)line_number;
+	stack_t *val = *stack;
 
 	while (val)
 	{
 		printf("%d\n", val->n);
 		val = val->next;
 	}
-	(void)line_number;
+	
 
 }
 
