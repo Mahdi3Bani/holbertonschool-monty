@@ -40,7 +40,7 @@ typedef struct instruction_s
 
 /** monty function*/
 
-int execute(char *l);
+void execute(char *l, stack_t **stack);
 
 /**monty function option*/
 void push(stack_t **stack, unsigned int line_number);
