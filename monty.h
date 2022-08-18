@@ -6,6 +6,10 @@
 #include <stddef.h>
 #include <string.h>
 
+
+
+extern int glob;
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -40,7 +44,7 @@ typedef struct instruction_s
 
 /** monty function*/
 
-void execute(char *l, stack_t **stack);
+void execute(FILE *fd, stack_t **stack, int line_number);
 
 /**monty function option*/
 void push(stack_t **stack, unsigned int line_number);
