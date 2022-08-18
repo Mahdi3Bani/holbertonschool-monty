@@ -71,7 +71,9 @@ void mod(stack_t **stack, unsigned int line_number);
 
 
 
+/** stack func **/
 
+void _free(stack_t *stack);
 
 
 
