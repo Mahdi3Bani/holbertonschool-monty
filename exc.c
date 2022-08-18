@@ -9,7 +9,6 @@ int info;
 void execute(char *line, stack_t **stack, int line_number)
 {
 	char *token;
-	char *tok;
 
 	instruction_t instructions[] = {{"push", push}, {"pall", pall},
 		{"pint", pint}, {"pop", pop}, {"swap", swap},
@@ -18,12 +17,11 @@ void execute(char *line, stack_t **stack, int line_number)
 	instruction_t *inst = instructions;
 
 	token = strtok (line, " \t\r\n");
-	if (strcmp(token, "push") == 0)
+	if (check_push(token))
 	{
-		tok = strtok(NULL, " \t\r\n");
-		info = atoi(tok);
+		info = get_value(token);
 	}
-	else if (strcmp(token, "push") != 0)
+	else
 	{
 
 		while ((inst->opcode) && !strcmp(inst->opcode, token))
