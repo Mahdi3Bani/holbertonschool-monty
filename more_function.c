@@ -35,7 +35,6 @@ void add(stack_t **stack, unsigned int line_number)
 	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
 	{
 		fprintf(stderr, "err %u", line_number);
-
 	}
 
 	(*stack)->next->next->n += (*stack)->next->n;
