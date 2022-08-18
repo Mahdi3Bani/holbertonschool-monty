@@ -3,33 +3,37 @@
  * execute_monty - function that execute the monty byte
  *
  */
-void execute(char *l, stack_t **stack)
+
+
+void execute(char *line, stack_t **stack, int line_number)
 {
-char *arr;
-int i;
-int j;
-instruction_t instructions[] = {{"push", push}, {"pall", pall},
+	char **token;
+
+	instruction_t instructions[] = {{"push", push}, {"pall", pall},
 		{"pint", pint}, {"pop", pop}, {"swap", swap},
 		{"add", add}, {"sub", sub}, {"nop", nop}, {"pchar", pchar},
 		{"div", divide}, {"mul", mul}, {"mod", mod}, {NULL, NULL}};
-	instruction_t *instruct_p = instructions;
-    
-	i = 0;
-	j = 0;
-	arr = strtok(l, " ");
+	instruction_t *inst = instructions;
+
+	token = strtok (line, " \t\r\n");
+	if (token)
+	{
+		while ((inst->opcode) && strcmp(inst->opcode, token[0]))
+		inst++;
+		if (inst->opcode)
+		{
+			inst->f(stack,token[1]);
+
+		}
+		else
+		{
+			fprintf(stderr, "L%lu: unknown instruction %s\n", line_number, token[0]);
+			_free(*stack);
+			exit(EXIT_FAILURE);
+		}
+	}
 	
 
-	while (arr)
-	{
-		
-		while (instruct_p[i].opcode != 0)
-	{
-		if (strcmp(instruct_p->opcode, arr))
-		{
-			instruct_p[i].f(stack, j);
-			
-		}
-		j++;
-	}
-}
+
+
 }
