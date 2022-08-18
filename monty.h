@@ -44,7 +44,7 @@ typedef struct instruction_s
 
 /** monty function*/
 
-void execute(char *line, stack_t **stack, int line_number);
+void execute( stack_t **stack, int line_number);
 
 /**monty function option*/
 

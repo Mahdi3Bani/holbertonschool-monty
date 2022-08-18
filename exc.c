@@ -5,7 +5,7 @@
  */
 
 
-void execute(char *line, stack_t **stack, int line_number)
+void execute( stack_t **stack, int line_number)
 {
 	char *token;
 
