@@ -30,7 +30,7 @@ void execute(char *line, stack_t **stack, int line_number)
 		else
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, token);
-			_free(*stack);
+			free(*stack);
 			exit(EXIT_FAILURE);
 		}
 	}

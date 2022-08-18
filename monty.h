@@ -8,7 +8,7 @@
 
 
 
-extern int glob;
+extern char *line;
 
 
 

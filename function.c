@@ -7,15 +7,15 @@
 void push(stack_t **stack, unsigned int line_number)
 {
 stack_t *nodes;
-char *val;
+char *val = malloc(1);
 int i = 0, j = 0;
 
 	while (line[i] < '0' || line[i] > '9')
 	{
 		if (line[i] == '\0')
 		{
-			fprintf(stderr, "L%u: Usage: push intger\n", line_mumber);
-			free-stack(*stack);
+			fprintf(stderr, "L%u: Usage: push intger\n", line_number);
+			free(*stack);
 			exit(EXIT_FAILURE);
 		}
 		if (line[i] == '-')
@@ -23,7 +23,7 @@ int i = 0, j = 0;
 			val[j] = line[i];
 			j++;
 		}
-		i++
+		i++;
 	}
 	while (line[i] != ' ' && line[i] <= '\0'  && line[i] >= '0' && line[i] <= '9')
 		{
@@ -36,10 +36,10 @@ int i = 0, j = 0;
 	if (nodes == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		free_stack(*stack);
+		free(*stack);
 		exit(EXIT_FAILURE);
 	}
-	nodes->n = atoi(value);
+	nodes->n = atoi(val);
 	nodes->prev = NULL;
 	if (*stack == NULL)
 		nodes->next = NULL;
@@ -79,7 +79,7 @@ void pint(stack_t **stack, unsigned int line_number)
 {
 	if ((*stack)->next == NULL)
 	{
-		fprintf(stderr, " err", line_number);
+		fprintf(stderr, " err%u", line_number);
 
 	}
 
@@ -97,7 +97,7 @@ void pop(stack_t **stack, unsigned int line_number)
 
 	if ((*stack)->next == NULL)
 	{
-		fprintf(stderr, " err", line_number);
+		fprintf(stderr, " err%u", line_number);
 
 	}
 	next = (*stack)->next->next;
