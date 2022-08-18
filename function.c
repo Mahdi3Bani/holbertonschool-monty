@@ -6,7 +6,13 @@
  */
 void push(stack_t **stack, unsigned int line_number)
 {
+stack_t *nodes;
+char *val;
+int i = 0, j = 0;
 
+{
+
+}
 }
 
 /**
