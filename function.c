@@ -1,5 +1,5 @@
 #include "monty.h"
-
+char *line;
 /**
  * push - function tha push a value to a stack linked list
  * @stack: node of stack linked list

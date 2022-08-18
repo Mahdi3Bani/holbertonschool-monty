@@ -1,4 +1,5 @@
 #include "monty.h"
+char *line;
 /**
  * main - monty program
  * @argc: argument counter

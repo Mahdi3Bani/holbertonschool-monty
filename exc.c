@@ -1,4 +1,5 @@
 #include "monty.h"
+char *line;
 /**
  * execute_monty - function that execute the monty byte
  *
