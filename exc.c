@@ -19,9 +19,9 @@ void execute(char *line, stack_t **stack, int line_number)
 	token = strtok (line, " \t\r\n");
 	if (token)
 	{
-	
+
 		while ((inst->opcode) && strcmp(inst->opcode, token))
-		inst++;
+			inst++;
 		if (inst->opcode)
 		{
 			inst->f(stack,token[1]);
@@ -30,11 +30,11 @@ void execute(char *line, stack_t **stack, int line_number)
 		else
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, token);
-			_free(*stack);
+			free(*stack);
 			exit(EXIT_FAILURE);
 		}
 	}
-	
+
 
 
 

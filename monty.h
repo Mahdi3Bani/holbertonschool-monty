@@ -7,9 +7,7 @@
 #include <string.h>
 
 
-
-extern int glob;
-
+extern char *line;
 
 
 /**
