@@ -23,10 +23,10 @@ void execute(char *line, stack_t **stack, int line_number)
 		tok = strtok(NULL, " \t\r\n");
 		info = atoi(tok);
 	}
-	else if (token)
+	else if (strcmp(token, "push") != 0)
 	{
 
-		while ((inst->opcode) && strcmp(inst->opcode, token))
+		while ((inst->opcode) && !strcmp(inst->opcode, token))
 			inst++;
 		if (inst->opcode)
 		{
