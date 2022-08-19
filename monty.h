@@ -93,8 +93,8 @@ void clean_stack(stack_t **stack);
 
 
 /** error function */
-int usage_error(void);
-int open_error(char *file);
+void usage_error(void);
+void open_error(char *file);
 void push_error(FILE *fd, char *line, stack_t *stack, int line_number);
 void instr_error(FILE *fd, char *line, stack_t *stack, char *val, int line_number);
 

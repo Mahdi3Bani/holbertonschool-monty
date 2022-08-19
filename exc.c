@@ -1,8 +1,8 @@
 #include "monty.h"
 cmd_t cmd = {NULL, NULL};
 /**
- * execute - function that execute the monty byte
- *
+ * execute - function that read the file and execute the monty byte
+ *@argv: the file ;
  */
 
 void execute(char *argv)
@@ -12,6 +12,7 @@ void execute(char *argv)
 	char *token = NULL, *val = NULL;
 	stack_t *stack = NULL;
 
+	/** open file mod read in global variable*/
 	cmd.fd = fopen(argv, "r");
 	if (cmd.fd)
 	{
@@ -24,33 +25,36 @@ void execute(char *argv)
 				free(token);
 				continue;
 			}
-			else if (*token == '#')
+			else if (*token == '#')/** is comment*/
 				continue;
 			val = strtok(NULL, " \n\t\r");
 			r = get_opc(&stack, token, val, c_line);
-			if (r == 1)
-				push_error(cmd.fd, cmd.line, stack, c_line);
-			else if (r == -1)
+			if (r == 1) /** get_opt return 1 when the value is not digit */
+				push_error(cmd.fd, cmd.line, stack, c_line); /** print push error*/
+			else if (r == -1) /** get_opt return -1if not the instruction */
 				instr_error(cmd.fd, cmd.line, stack, token, c_line);
+					/**print instruction error*/
 		}
 		free(cmd.line);
-		_free(stack);
-		fclose(cmd.fd);
+		_free(stack);/** free all*/
+		fclose(cmd.fd); /** close file*/
 	}
 	else
 	{
-		fprintf(stderr, "Error: Can't open file %s\n", argv);
-		exit(EXIT_FAILURE);
+		/** print open error*/
+		open_error(argv);
+
 	}
 }
 
 
 /**
- * get_opc - function to handle the opcode
- * @stack: is a stack or queue
+ * get_opc - function that get the option function
+ * @stack: stack or queue
  * @arg: commande
  * @val: value
- * @line_number: is a line command
+ * @line_number: iline number
+ * Return: 0 in success 1 and -1 error
  */
 int get_opc(stack_t **stack, char *arg, char *val, int line_number)
 {
@@ -81,7 +85,7 @@ int get_opc(stack_t **stack, char *arg, char *val, int line_number)
 				if (_isdigit(val) == 1)
 					value = atoi(val);
 				else
-					return (1);
+					return (1);/** if not digit*/
 			}
 			op[i].f(stack, (unsigned int)line_number);
 			break;
@@ -89,13 +93,13 @@ int get_opc(stack_t **stack, char *arg, char *val, int line_number)
 		i++;
 	}
 	if (!op[i].opcode)
-		return (-1);
+		return (-1);/** if not the commande*/
 
 	return (0);
 }
 
 /**
- * clean_stack - Free and close files
+ * clean_stack - Free all and close files
  * @stack: Stack
  */
 void clean_stack(stack_t **stack)

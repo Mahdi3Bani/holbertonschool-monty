@@ -2,7 +2,7 @@
 /**
  * main - monty program
  * @argc: argument counter
- * @argv: argument value
+ * @argv: argument value file name
  * Return: success or failure
  */
 int main(int argc, char **argv)
@@ -10,11 +10,13 @@ int main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		fprintf(stderr, "USAGE: monty file\n");
-		exit(EXIT_FAILURE);
+		 /** print usage error*/
+
+		usage_error();
 	}
 	else
 	{
+		/** read the file and execute */
 		execute(argv[1]);
 	}
 
