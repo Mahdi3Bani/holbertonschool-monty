@@ -1,30 +1,45 @@
 #include "monty.h"
-int info;
+int value;
 /**
- * push - function tha push a value to a stack linked list
- * @stack: node of stack linked list
- * @line_number: the current line number
+ * new_Node - create new node
+ * @n: is a value
+ * Return: new node
+ */
+stack_t *new_Node(int n)
+{
+	stack_t *new = NULL;
+
+	new = malloc(sizeof(stack_t));
+	if (new == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
+	new->n = n;
+	new->next = NULL;
+	new->prev = NULL;
+
+	return (new);
+}
+
+/**
+ * push - push item
+ * @stack: is a parameter
+ * @line_number: is value
  */
 void push(stack_t **stack, unsigned int line_number)
 {
-stack_t *new;
+	stack_t *new = NULL;
+	(void)line_number;
 
-	if (!info)
-	{
-		fprintf(stderr, "L%u: usage: push integer\n", line_number);
-		_free(*stack);
-		exit(EXIT_FAILURE);
-	}
+	new = new_Node(value);
 
-	new = new_node(info);
 	new->next = *stack;
-	new->prev = NULL;
-	if (*stack)
+	if (*stack != NULL)
 		(*stack)->prev = new;
 	*stack = new;
-	
-	
 }
+
 
 /**
  * pall - function that print
@@ -33,18 +48,16 @@ stack_t *new;
  */
 void pall(stack_t **stack, unsigned int line_number)
 {
-	
-	stack_t *val;
+	stack_t *tmp = NULL;
+	(void)line_number;
 
+	tmp = *stack;
 
-	val = *stack;
-	while (val)
+	while (tmp != NULL)
 	{
-		printf("%d\n", val->n);
-		val = val->next;
+		fprintf(stdout, "%d\n", tmp->n);
+		tmp = tmp->next;
 	}
-	
-(void)line_number;
 }
 
 /**
@@ -54,13 +67,15 @@ void pall(stack_t **stack, unsigned int line_number)
  */
 void pint(stack_t **stack, unsigned int line_number)
 {
-	if ((*stack)->next == NULL)
+	if (!*stack || !stack)
 	{
-		fprintf(stderr, " err%u", line_number);
-
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		clean_stack(stack);
+		exit(EXIT_FAILURE);
 	}
+	else
+		fprintf(stdout, "%d\n", (*stack)->n);
 
-	printf("%d\n", (*stack)->next->n);
 }
 
 /**
@@ -70,28 +85,21 @@ void pint(stack_t **stack, unsigned int line_number)
  */
 void pop(stack_t **stack, unsigned int line_number)
 {
-	stack_t *next = NULL;
+	stack_t *new = NULL;
 
-	if ((*stack)->next == NULL)
+	if (*stack == NULL || stack == NULL)
 	{
-		fprintf(stderr, " err%u", line_number);
-
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		clean_stack(stack);
+		exit(EXIT_FAILURE);
 	}
-	next = (*stack)->next->next;
 
-	if (next)
-		next->prev = *stack;
-	(*stack)->next = next;
+	new = *stack;
+
+	*stack = new->next;
+	if (new->next != NULL)
+		new->next->prev = new->prev;
+	free(new);
 }
 
 
-/**
- * nop - function
- * @stack: node of stack linked list
- * @line_number: the current line number
- */
-void nop(stack_t **stack, unsigned int line_number)
-{
-	(void)stack;
-	(void)line_number;
-}

@@ -1,28 +1,35 @@
 #include "monty.h"
 /**
+ * nop - function
+ * @stack: node of stack linked list
+ * @line_number: the current line number
+ */
+
+void nop(stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+	(void)line_number;
+}
+
+/**
  * swap - function
  * @stack: node of stack linked list
  * @line_number: the current line number
  */
 void swap(stack_t **stack, unsigned int line_number)
 {
-	stack_t *val;
+	stack_t *val = *stack;
+	int tmp = 0;
 
-	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
+	if (!*stack || !(*stack)->next)
 	{
-		fprintf(stderr, "err %u", line_number);
-
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+		clean_stack(stack);
+		exit(EXIT_FAILURE);
 	}
-
-	val = (*stack)->next->next;
-	(*stack)->next->next = val->next;
-	(*stack)->next->prev = val;
-
-	if (val->next)
-		val->next->prev = (*stack)->next;
-	val->next = (*stack)->next;
-	val->prev = *stack;
-	(*stack)->next = val;
+	tmp = val->n;
+	val->n = val->next->n;
+	val->next->n = tmp;
 }
 
 /**
@@ -32,14 +39,19 @@ void swap(stack_t **stack, unsigned int line_number)
  */
 void add(stack_t **stack, unsigned int line_number)
 {
-	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
+	stack_t *val = NULL;
+	int sum = 0;
+
+	if (!*stack || !(*stack)->next)
 	{
-		fprintf(stderr, "err %u", line_number);
+		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
+		clean_stack(stack);
+		exit(EXIT_FAILURE);
 	}
-
-	(*stack)->next->next->n += (*stack)->next->n;
+	val = *stack;
+	sum = val->n + val->next->n;
+	val->next->n = sum;
 	pop(stack, line_number);
-
 }
 
 void pchar(stack_t **stack, unsigned int line_number)
