@@ -26,7 +26,7 @@ void divide(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	val = (*stack)->next;
-	sum = (*stack)->n;
+	sum = val->n;
 	sum /= (*stack)->n;
 	pop(stack, line_number);
 	val->n = sum;
@@ -50,7 +50,7 @@ void mul(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	val = (*stack)->next;
-	sum = (*stack)->n;
+	sum = val->n;
 	sum *= (*stack)->n;
 	pop(stack, line_number);
 	val->n = sum;
@@ -83,7 +83,7 @@ void mod(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	val = (*stack)->next;
-	sum = (*stack)->n;
+	sum = val->n;
 	sum %= (*stack)->n;
 	pop(stack, line_number);
 	val->n = sum;
