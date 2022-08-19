@@ -10,12 +10,7 @@ void divide(stack_t **stack, unsigned int line_number)
 {
 	
 
-	if ((*stack)->n == 0)
-	{
-		fprintf(stderr, "L%u: division by zero\n", line_number);
-		clean_stack(stack);
-		exit(EXIT_FAILURE);
-	}
+
 	stack_t *val = NULL;
 	int sum = 0;
 
@@ -25,6 +20,15 @@ void divide(stack_t **stack, unsigned int line_number)
 		clean_stack(stack);
 		exit(EXIT_FAILURE);
 	}
+
+		if ((*stack)->n == 0)
+	{
+		fprintf(stderr, "L%u: division by zero\n", line_number);
+		clean_stack(stack);
+		exit(EXIT_FAILURE);
+	}
+
+	
 	val = (*stack)->next;
 	sum = val->n;
 	sum /= (*stack)->n;
