@@ -5,7 +5,7 @@
 	<b><i>HOLBERTON SCHOOL MONTY PROGRAM</i></b><br>
 </p>
 <p align="center">
-	<img ="I hate y MONTY" src="img1.jpg"/>
+	<img alt="I hate y MONTY" height="200" witdth="200" src="img1.jpg"/>
 
 </p>
 
