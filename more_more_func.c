@@ -17,14 +17,14 @@ void divide(stack_t **stack, unsigned int line_number)
 	if (!*stack || !(*stack)->next)
 	{
 		fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
-		clean_stack(stack);
+		_free(*stack);
 		exit(EXIT_FAILURE);
 	}
 
 		if ((*stack)->n == 0)
 	{
 		fprintf(stderr, "L%u: division by zero\n", line_number);
-		clean_stack(stack);
+		_free(*stack);
 		exit(EXIT_FAILURE);
 	}
 
@@ -50,7 +50,7 @@ void mul(stack_t **stack, unsigned int line_number)
 	if (!*stack || !(*stack)->next)
 	{
 		fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
-		clean_stack(stack);
+		_free(*stack);
 		exit(EXIT_FAILURE);
 	}
 	val = (*stack)->next;
@@ -78,18 +78,18 @@ void mod(stack_t **stack, unsigned int line_number)
 	if (!*stack || !(*stack)->next)
 	{
 		fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
-		clean_stack(stack);
+		_free(*stack);
 		exit(EXIT_FAILURE);
 	}
 
 	if ((*stack)->n == 0)
 	{
 		fprintf(stderr, "L%u: idivision by zero\n", line_number);
-		clean_stack(stack);
+		_free(*stack);
 		exit(EXIT_FAILURE);
 	}
 
-	
+
 	val = (*stack)->next;
 	sum = val->n;
 	sum %= (*stack)->n;
