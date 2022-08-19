@@ -28,7 +28,7 @@ void divide(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	
+
 	val = (*stack)->next;
 	sum = val->n;
 	sum /= (*stack)->n;
@@ -71,12 +71,7 @@ void mul(stack_t **stack, unsigned int line_number)
 void mod(stack_t **stack, unsigned int line_number)
 {
 
-	if ((*stack)->n == 0)
-	{
-		fprintf(stderr, "L%u: idivision by zero\n", line_number);
-		clean_stack(stack);
-		exit(EXIT_FAILURE);
-	}
+	
 	stack_t *val = NULL;
 	int sum = 0;
 
@@ -86,6 +81,15 @@ void mod(stack_t **stack, unsigned int line_number)
 		clean_stack(stack);
 		exit(EXIT_FAILURE);
 	}
+
+	if ((*stack)->n == 0)
+	{
+		fprintf(stderr, "L%u: idivision by zero\n", line_number);
+		clean_stack(stack);
+		exit(EXIT_FAILURE);
+	}
+
+	
 	val = (*stack)->next;
 	sum = val->n;
 	sum %= (*stack)->n;
