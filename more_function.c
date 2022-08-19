@@ -45,16 +45,10 @@ void add(stack_t **stack, unsigned int line_number)
 {
 	stack_t *val = NULL;
 	int sum = 0;
-	char c;
-	int count = 0;
 
+	
 
-
-	 for (c = getc(cmd.fd); c != EOF; c = getc(cmd.fd))
-        if (c == '\n') 
-            count = count + 1;
-
-	if (count < 2)
+	if (!*stack || !(*stack)->next)
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
 		clean_stack(stack);
