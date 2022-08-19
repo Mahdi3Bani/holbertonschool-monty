@@ -28,19 +28,20 @@ void execute(char *line, stack_t **stack, int line_number)
 			inst++;
 		if (inst->opcode)
 		{
-			inst->f(stack,token[1]);
+			inst->f(stack,get_token(inst->opcode, token));
 
 		}
 		else
 		{
-			fprintf(stderr, "L%d: unknown instruction %s\n", line_number + 1, token);
+			fprintf(stderr, "L%u: unknown instruction %s\n", line_number + 1, token);
 
 			_free(*stack);
 			exit(EXIT_FAILURE);
 		}
 	}
 
-
+	free (token);
+	_free(*stack);
 
 
 

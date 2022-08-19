@@ -71,12 +71,16 @@ void mod(stack_t **stack, unsigned int line_number);
 int check_push(char *token);
 
 int get_value(char *token);
+
+char get_token(char *op, char *token);
+
 /** help **/
 
 
 /** stack func **/
 
 void _free(stack_t *stack);
+stack_t *new_node(int info);
 
 
 

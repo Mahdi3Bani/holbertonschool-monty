@@ -7,31 +7,21 @@ int info;
  */
 void push(stack_t **stack, unsigned int line_number)
 {
-stack_t *node;
-(void)line_number;
+stack_t *new;
 
-	node = malloc(sizeof(stack_t));
-	
-	if (node == NULL)
+	if (!info)
 	{
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		_free(*stack);
 		exit(EXIT_FAILURE);
 	}
 
-	if (stack == NULL)
-	{
-		exit(EXIT_FAILURE);
-	}
-	node->n = info;
-	node->prev = NULL;
-	node->next = *stack;
-	if (*stack == NULL)
-	{
-		*stack = node;
-		return;
-	}
-	(*stack)->prev = node;
-	*stack = node;
-
+	new = new_node(info);
+	new->next = *stack;
+	new->prev = NULL;
+	if (*stack)
+		(*stack)->prev = new;
+	*stack = new;
 	
 	
 }

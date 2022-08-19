@@ -8,12 +8,12 @@ int check_push(char *token)
 while (token)
 {
     if (strcmp(token,"push"))
-    return (0);
+     token ++;
     else
-    token ++;
+    return(1);
 
 }
-return (1);
+return (0);
 }
 
 
@@ -28,4 +28,20 @@ int get_value(char *token)
         token++;
     }
     exit(EXIT_SUCCESS);
+}
+
+
+
+
+
+
+
+
+char get_token(char *op, char *token)
+
+{
+    while (strcmp(token,op))
+    token ++;
+
+    return (*token);
 }
