@@ -13,7 +13,7 @@ void divide(stack_t **stack, unsigned int line_number)
 	if ((*stack)->n == 0)
 	{
 		fprintf(stderr, "L%u: impssible to divide by 0\n", line_number);
-		free_stack(*stack);
+		clean_stack(stack);
 		exit(EXIT_FAILURE);
 	}
 	stack_t *val = NULL;
@@ -70,7 +70,7 @@ void mod(stack_t **stack, unsigned int line_number)
 	if ((*stack)->n == 0)
 	{
 		fprintf(stderr, "L%u: impssible to divide by 0\n", line_number);
-		free_stack(*stack);
+		clean_stack(stack);
 		exit(EXIT_FAILURE);
 	}
 	stack_t *val = NULL;
