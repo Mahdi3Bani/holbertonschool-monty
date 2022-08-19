@@ -52,10 +52,11 @@ void add(stack_t **stack, unsigned int line_number)
 		clean_stack(stack);
 		exit(EXIT_FAILURE);
 	}
-	val = *stack;
-	sum = val->n + val->next->n;
-	val->next->n = sum;
+	val = (*stack)->next;
+	sum = (*stack)->n;
+	sum += (*stack)->next->n;
 	pop(stack, line_number);
+	val->n = sum;
 }
 
 /**
