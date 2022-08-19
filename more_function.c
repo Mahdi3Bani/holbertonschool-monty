@@ -18,10 +18,11 @@ void nop(stack_t **stack, unsigned int line_number)
  */
 void swap(stack_t **stack, unsigned int line_number)
 {
-	stack_t *val = *stack;
+	stack_t *val;
 	int tmp = 0;
 
-	if (!*stack || !(*stack)->next)
+	val = *stack;
+	if (val == NULL || val->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
 		clean_stack(stack);
