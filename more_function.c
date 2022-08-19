@@ -105,7 +105,7 @@ void sub(stack_t **stack, unsigned int line_number)
 	}
 	val = (*stack)->next;
 	sum = (*stack)->n;
-	sum -= (*stack)->next->n;
+	sum -= (*stack)->n;
 	pop(stack, line_number);
 	val->n = sum;
 }
