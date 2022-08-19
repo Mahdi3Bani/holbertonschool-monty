@@ -12,7 +12,7 @@ void divide(stack_t **stack, unsigned int line_number)
 
 	if ((*stack)->n == 0)
 	{
-		fprintf(stderr, "L%u: impssible to divide by 0\n", line_number);
+		fprintf(stderr, "L%u: division by zero\n", line_number);
 		clean_stack(stack);
 		exit(EXIT_FAILURE);
 	}
@@ -21,13 +21,13 @@ void divide(stack_t **stack, unsigned int line_number)
 
 	if (!*stack || !(*stack)->next)
 	{
-		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
+		fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
 		clean_stack(stack);
 		exit(EXIT_FAILURE);
 	}
 	val = (*stack)->next;
 	sum = (*stack)->n;
-	sum /= (*stack)->next->n;
+	sum /= (*stack)->n;
 	pop(stack, line_number);
 	val->n = sum;
 }
@@ -45,13 +45,13 @@ void mul(stack_t **stack, unsigned int line_number)
 
 	if (!*stack || !(*stack)->next)
 	{
-		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
+		fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
 		clean_stack(stack);
 		exit(EXIT_FAILURE);
 	}
 	val = (*stack)->next;
 	sum = (*stack)->n;
-	sum *= (*stack)->next->n;
+	sum *= (*stack)->n;
 	pop(stack, line_number);
 	val->n = sum;
 }
@@ -69,7 +69,7 @@ void mod(stack_t **stack, unsigned int line_number)
 
 	if ((*stack)->n == 0)
 	{
-		fprintf(stderr, "L%u: impssible to divide by 0\n", line_number);
+		fprintf(stderr, "L%u: idivision by zero\n", line_number);
 		clean_stack(stack);
 		exit(EXIT_FAILURE);
 	}
@@ -78,13 +78,13 @@ void mod(stack_t **stack, unsigned int line_number)
 
 	if (!*stack || !(*stack)->next)
 	{
-		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
+		fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
 		clean_stack(stack);
 		exit(EXIT_FAILURE);
 	}
 	val = (*stack)->next;
 	sum = (*stack)->n;
-	sum %= (*stack)->next->n;
+	sum %= (*stack)->n;
 	pop(stack, line_number);
 	val->n = sum;
 }
