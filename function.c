@@ -85,21 +85,24 @@ void pint(stack_t **stack, unsigned int line_number)
  */
 void pop(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new = NULL;
+	stack_t *temp;
 
-	if (*stack == NULL || stack == NULL)
+	if (!*stack)
 	{
-		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
-		clean_stack(stack);
+		fprintf(stderr, "L%u: can't pop an empty stack\n",line_number);
+		_free(*stack);
 		exit(EXIT_FAILURE);
+		
 	}
 
-	new = *stack;
-
-	*stack = new->next;
-	if (new->next != NULL)
-		new->next->prev = new->prev;
-	free(new);
+	else
+	{
+		temp = (*stack)->next;
+		free(*stack);
+		if (temp)
+			temp->prev = NULL;
+		*stack = temp;
+	}
 }
 
 
