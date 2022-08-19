@@ -5,36 +5,16 @@
  */
 void _free(stack_t *stack)
 {
-    
-	stack_t *temp;
+stack_t *list = NULL;
 
-	while (stack)
+	list = stack;
+
+	if (list != NULL)
 	{
-		temp = stack->next;
-		free(stack);
-		stack = temp;
+		_free(list->next);
+		free(list);
 	}
-}
 
-
-
-
-
-
-
-
-
-stack_t *new_node(int info)
-{
-	stack_t *new;
-
-	new = malloc(sizeof(stack_t));
-	if (!new)
-	{
-		fprintf(stderr, "Error: malloc failed");
-		exit(EXIT_FAILURE);
 	}
-	new->n = info;
 
-	return (new);
-}
+
