@@ -27,9 +27,12 @@ void swap(stack_t **stack, unsigned int line_number)
 		clean_stack(stack);
 		exit(EXIT_FAILURE);
 	}
+	else
+	{
 	tmp = val->n;
 	val->n = val->next->n;
 	val->next->n = tmp;
+}
 }
 
 /**
