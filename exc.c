@@ -60,10 +60,15 @@ int get_opc(stack_t **stack, char *arg, char *val, int line_number)
 		{"push", push},
 		{"pall", pall},
 		{"pint", pint},
-		{"pop", pall},
+		{"pop", pop},
 		{"nop", nop},
 		{"swap", swap},
 		{"add", add},
+		{"sub", sub},
+		{"div", divide},
+		{"mul", mul},
+		{"mod", mod},
+		{"pchar", pchar},
 		{NULL, NULL}
 	};
 
