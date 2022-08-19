@@ -8,7 +8,14 @@
 
 
 extern int info;
+typedef struct cmd_s
+{
+	FILE *fd;
+	char *line;
+} cmd_t;
 
+extern cmd_t cmd;
+extern int value;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -44,8 +51,8 @@ typedef struct instruction_s
 
 /** monty function*/
 
-void execute(char *line, stack_t **stack, int line_number);
-
+void execute(char *argv);
+int get_opc(stack_t **stack, char *arg, char *val, int line_number);
 /**monty function option*/
 
 
@@ -80,7 +87,7 @@ char get_token(char *op, char *token);
 /** stack func **/
 
 void _free(stack_t *stack);
-stack_t *new_node(int info);
+void clean_stack(stack_t **stack);
 
 
 
@@ -88,9 +95,12 @@ stack_t *new_node(int info);
 /** error function */
 int usage_error(void);
 int open_error(char *file);
+void push_error(FILE *fd, char *line, stack_t *stack, int line_number);
+void instr_error(FILE *fd, char *line, stack_t *stack, char *val, int line_number);
 
 /** standard function*/
 
-
+int _isdigit(char *c);
+stack_t *new_Node(int n);
 
 #endif
