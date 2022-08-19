@@ -15,6 +15,6 @@ stack_t *list = NULL;
 		free(list);
 	}
 
-	}
+}
 
 

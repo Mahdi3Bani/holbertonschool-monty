@@ -3,10 +3,10 @@
  * usage_error - function that print an usage error message
  * Return: FAILURE
  */
-int usage_error(void)
+void usage_error(void)
 {
 	fprintf(stderr, "USAGE: monty file\n");
-	return (EXIT_FAILURE);
+	exit(EXIT_FAILURE);
 
 }
 
@@ -15,11 +15,11 @@ int usage_error(void)
  *@file: file name
  * Return: FAILURE
  */
-int open_error(char *file)
+void open_error(char *file)
 {
 	fprintf(stderr, "Error: Can't open file %s\n", file);
 
-	return (EXIT_FAILURE);
+	exit(EXIT_FAILURE);
 
 }
 /**
@@ -43,12 +43,12 @@ void push_error(FILE *fd, char *line, stack_t *stack, int line_number)
  * @fd: is a file descriptor
  * @line: is a buffer
  * @stack: is a stack or queue
- * @line_number: is a line command
+ * @line_n: is a line command
  * @val: number
  */
-void instr_error(FILE *fd, char *line, stack_t *stack, char *val, int line_number)
+void instr_error(FILE *fd, char *line, stack_t *stack, char *val, int line_n)
 {
-	fprintf(stderr, "L%u: unknown instruction %s\n", line_number, val);
+	fprintf(stderr, "L%u: unknown instruction %s\n", line_n, val);
 	fclose(fd);
 	free(line);
 	_free(stack);

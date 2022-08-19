@@ -23,8 +23,8 @@ stack_t *new_Node(int n)
 }
 
 /**
- * push - push item
- * @stack: is a parameter
+ * push - Function that pushes an element to the stack.
+ * @stack: stack
  * @line_number: is value
  */
 void push(stack_t **stack, unsigned int line_number)
@@ -42,7 +42,8 @@ void push(stack_t **stack, unsigned int line_number)
 
 
 /**
- * pall - function that print
+ * pall - function that print all the values on the stack,
+ * starting from the top of the stack.
  * @stack: node of stack linked list
  * @line_number: the current line number
  */
@@ -61,7 +62,8 @@ void pall(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * pint - function tha print
+ * pint - function that prints the value at the top of the stack,
+ * followed by a new line.
  * @stack: node of stack linked list
  * @line_number: the current line number
  */
@@ -79,7 +81,7 @@ void pint(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * pop - function tha print
+ * pop - function tha print removes the top element of the stack.
  * @stack: node of stack linked list
  * @line_number: the current line number
  */
@@ -89,10 +91,9 @@ void pop(stack_t **stack, unsigned int line_number)
 
 	if (!*stack)
 	{
-		fprintf(stderr, "L%u: can't pop an empty stack\n",line_number);
+		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
 		_free(*stack);
 		exit(EXIT_FAILURE);
-		
 	}
 
 	else

@@ -12,9 +12,9 @@ void nop(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * swap - function
- * @stack: node of stack linked list
- * @line_number: the current line number
+ * swap - function that swaps the top two elements of the stack.
+ * @stack: node of linked list
+ * @line_number: line number
  */
 void swap(stack_t **stack, unsigned int line_number)
 {
@@ -33,9 +33,9 @@ void swap(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * add - function
- * @stack: node of stack linked list
- * @line_number: the current line number
+ * add - function that adds the top two elements of the stack.
+ * @stack: node of linked list
+ * @line_number: the line number
  */
 void add(stack_t **stack, unsigned int line_number)
 {
@@ -54,12 +54,23 @@ void add(stack_t **stack, unsigned int line_number)
 	pop(stack, line_number);
 }
 
+/**
+ * pchar - function that adds the top two elements of the stack.
+ * @stack: node of linked list
+ * @line_number: the line number
+ */
+
 void pchar(stack_t **stack, unsigned int line_number)
 {
 	(void)stack;
 	(void)line_number;
 }
 
+/**
+ * sub - function that adds the top two elements of the stack.
+ * @stack: node of linked list
+ * @line_number: the line number
+ */
 
 
 void sub(stack_t **stack, unsigned int line_number)
@@ -68,8 +79,3 @@ void sub(stack_t **stack, unsigned int line_number)
 	(void)line_number;
 }
 
-void divide(stack_t **stack, unsigned int line_number)
-{
-	(void)stack;
-	(void)line_number;
-}
