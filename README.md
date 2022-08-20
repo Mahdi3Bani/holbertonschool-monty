@@ -53,7 +53,20 @@ $ gcc -Wall -Werror -Wextra -pedantic *.c -o monty
 ```
 ### 🖥 EXEMPLE
 ```
-
+@ubuntu:~/monty$ cat bytecodes/09.m 
+push 1
+push 2
+push 3
+pall
+swap
+pall
+@ubuntu:~/monty$ ./monty bytecodes/09.m 
+3
+2
+1
+2
+3
+1
 
 ```
 
