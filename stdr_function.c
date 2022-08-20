@@ -1,21 +1,21 @@
 #include "monty.h"
 /**
- * _isdigit - Checks for a digit 0 through 9
+ * _isdigit - Checks if is a digit  0 .. 9
  * Return: 0 or 1
- * @c: Variable
+ * @c: Value
  **/
 int _isdigit(char *c)
 {
-	char *aux = c;
+	char *tmp = c;
 
 	if (c == NULL)
 		return (0);
-	if (*aux == '-')
-		aux++;
+	if (*tmp == '-')
+		tmp++;
 
-	for (; *aux != '\0'; aux++)
+	for (; *tmp != '\0'; tmp++)
 	{
-		if ((*aux < '0' || *aux > '9'))
+		if ((*tmp < '0' || *tmp > '9'))
 		{
 			return (0);
 		}
