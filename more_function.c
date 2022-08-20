@@ -93,7 +93,6 @@ void pchar(stack_t **stack, unsigned int line_number)
  * @line_number: the line number
  */
 
-
 void sub(stack_t **stack, unsigned int line_number)
 {
 	stack_t *val = NULL;
