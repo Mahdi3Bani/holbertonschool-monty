@@ -8,8 +8,6 @@
 
 void divide(stack_t **stack, unsigned int line_number)
 {
-	
-
 
 	stack_t *val = NULL;
 	int sum = 0;
